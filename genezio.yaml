@@ -1,0 +1,13 @@
+yamlVersion: 3
+name: japan-customer-ui
+frontend:
+  path: dist
+  fallback: index.html
+  routes:
+    - path: /**  # tất cả route chuyển về index.html cho SPA
+      serve: index.html
+
+scripts:
+  deploy:
+    - npm install --legacy-peer-deps
+    - npm run build

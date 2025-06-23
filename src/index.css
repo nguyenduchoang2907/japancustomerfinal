@@ -1,0 +1,414 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 245 240; /* japanese-washi */
+    --foreground: 28 28 28; /* japanese-sumi */
+
+    --card: 248 245 240;
+    --card-foreground: 28 28 28;
+
+    --popover: 248 245 240;
+    --popover-foreground: 28 28 28;
+
+    --primary: 255 183 197; /* japanese-sakura */
+    --primary-foreground: 28 28 28;
+
+    --secondary: 127 176 105; /* japanese-matcha */
+    --secondary-foreground: 248 245 240;
+
+    --muted: 240 240 235;
+    --muted-foreground: 112 128 144;
+
+    --accent: 28 28 28; /* japanese-sumi */
+    --accent-foreground: 248 245 240;
+
+    --destructive: 220 38 38;
+    --destructive-foreground: 248 245 240;
+
+    --border: 220 220 215;
+    --input: 235 235 230;
+    --ring: 255 183 197;
+
+    --radius: 0.375rem;
+
+    --sidebar-background: 248 245 240;
+    --sidebar-foreground: 28 28 28;
+    --sidebar-primary: 255 183 197;
+    --sidebar-primary-foreground: 28 28 28;
+    --sidebar-accent: 240 240 235;
+    --sidebar-accent-foreground: 28 28 28;
+    --sidebar-border: 220 220 215;
+    --sidebar-ring: 255 183 197;
+  }
+
+  .dark {
+    --background: 28 28 28;
+    --foreground: 248 245 240;
+
+    --card: 35 35 35;
+    --card-foreground: 248 245 240;
+
+    --popover: 28 28 28;
+    --popover-foreground: 248 245 240;
+
+    --primary: 255 183 197; /* Hồng sakura */
+    --primary-foreground: 28 28 28;
+
+    --secondary: 127 176 105; /* Xanh matcha */
+    --secondary-foreground: 28 28 28;
+
+    --muted: 45 45 45;
+    --muted-foreground: 180 180 175;
+
+    --accent: 75 0 130; /* Tím indigo */
+    --accent-foreground: 248 245 240;
+
+    --destructive: 255 69 0;
+    --destructive-foreground: 248 245 240;
+
+    --border: 60 60 60;
+    --input: 45 45 45;
+    --ring: 255 183 197;
+
+    --sidebar-background: 28 28 28;
+    --sidebar-foreground: 248 245 240;
+    --sidebar-primary: 255 183 197;
+    --sidebar-primary-foreground: 28 28 28;
+    --sidebar-accent: 45 45 45;
+    --sidebar-accent-foreground: 248 245 240;
+    --sidebar-border: 60 60 60;
+    --sidebar-ring: 255 183 197;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-japanese;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(255, 183, 197, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(127, 176, 105, 0.05) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(248, 245, 240, 0.8) 0%, rgba(248, 245, 240, 1) 100%);
+  }
+
+  /* Japanese-style scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-japanese-washi;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-japanese-sakura rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-japanese-matcha;
+  }
+}
+
+@layer components {
+  /* Japanese paper texture effect */
+  .washi-paper {
+    background: linear-gradient(135deg, #f8f5f0 0%, #f5f2ed 50%, #f0ede8 100%);
+    position: relative;
+  }
+  
+  .washi-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 183, 197, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(127, 176, 105, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Traditional Japanese border */
+  .japanese-border {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, #ffb7c5, #7fb069, #1c1c1c, #ffb7c5) 1;
+    position: relative;
+  }
+
+  .japanese-border::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px solid rgba(255, 183, 197, 0.3);
+    pointer-events: none;
+  }
+
+  /* Japanese typography styles */
+  .japanese-title {
+    @apply font-japanese-serif text-japanese-sumi;
+    text-shadow: 2px 2px 4px rgba(255, 183, 197, 0.2);
+    letter-spacing: 0.05em;
+  }
+
+  .japanese-text {
+    @apply font-japanese text-japanese-sumi;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  /* Traditional Japanese card style */
+  .japanese-card {
+    @apply washi-paper rounded-lg shadow-paper border border-japanese-sakura/20;
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .japanese-card:hover {
+    @apply shadow-japanese;
+    transform: translateY(-2px);
+    border-color: rgb(255 183 197 / 0.4);
+  }
+
+  /* Zen-style button */
+  .zen-button {
+    @apply bg-japanese-sakura text-japanese-sumi border-2 border-japanese-sakura rounded-md;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zen-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+  }
+
+  .zen-button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .zen-button:hover {
+    @apply bg-japanese-matcha border-japanese-matcha text-japanese-washi;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 183, 197, 0.4);
+  }
+}
+
+/* Enhanced anime-style animations */
+@keyframes float-slow {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-15px) rotate(5deg); 
+  }
+}
+
+@keyframes float-delay-1 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-12px) rotate(-3deg); 
+  }
+}
+
+@keyframes float-delay-2 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-8px) rotate(2deg); 
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    transform: scale(1.1) rotate(2deg); 
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { 
+    transform: rotate(0deg); 
+  }
+  25% { 
+    transform: rotate(5deg); 
+  }
+  75% { 
+    transform: rotate(-5deg); 
+  }
+}
+
+@keyframes float-character {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px) rotate(5deg) scale(1.1); 
+  }
+  50% { 
+    transform: translateY(-10px) translateX(-5px) rotate(-2deg) scale(0.95); 
+  }
+  75% { 
+    transform: translateY(-25px) translateX(5px) rotate(3deg) scale(1.05); 
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sakura-float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-15px) translateX(8px) rotate(90deg); 
+  }
+  50% { 
+    transform: translateY(-5px) translateX(-8px) rotate(180deg); 
+  }
+  75% { 
+    transform: translateY(-20px) translateX(5px) rotate(270deg); 
+  }
+}
+
+@keyframes magical-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(255, 183, 197, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 183, 197, 0.6), 0 0 30px rgba(127, 176, 105, 0.3);
+  }
+}
+
+/* Spinner animations mượt mà hơn */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-delay-1 {
+  animation: float-delay-1 8s ease-in-out infinite 2s;
+}
+
+.animate-float-delay-2 {
+  animation: float-delay-2 7s ease-in-out infinite 1s;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.animate-float-character {
+  animation: float-character 12s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-sakura-float {
+  animation: sakura-float 8s ease-in-out infinite;
+}
+
+.animate-magical-glow {
+  animation: magical-glow 3s ease-in-out infinite;
+}
+
+/* Loading spinner animations */
+.animate-spin-slow {
+  animation: spin-slow 1.5s linear infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+/* Scale hover effect */
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+/* Floating elements throughout the page */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-elements::before {
+  content: '🌸';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 2rem;
+  animation: sakura-float 10s ease-in-out infinite;
+}
+
+.floating-elements::after {
+  content: '🎋';
+  position: absolute;
+  top: 60%;
+  right: 10%;
+  font-size: 1.5rem;
+  animation: float-delay-1 12s ease-in-out infinite;
+}
