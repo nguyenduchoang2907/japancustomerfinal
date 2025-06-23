@@ -19,35 +19,29 @@ const Index = () => {
 
   {/* Nội dung trung tâm */}
   <div className="relative h-full flex items-center justify-center">
-    <div className="text-center text-white p-8 japanese-card bg-black/60 backdrop-blur-md rounded-xl shadow-lg">
+    <div className="text-center text-japanese-sumi p-8 japanese-card bg-white/70 backdrop-blur-md rounded-xl shadow-lg">
       <div className="mb-6 animate-float">
         <span className="text-6xl md:text-8xl">✨</span>
       </div>
 
       {/* Tiêu đề chính */}
-      <h1
-        className="japanese-title text-4xl md:text-7xl font-bold mb-4 text-white animate-fade-slide"
-        style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)" }}
-      >
+      <h1 className="japanese-title text-4xl md:text-7xl font-bold mb-4 text-japanese-sumi animate-fade-slide">
         Tokimeレストラン
       </h1>
 
       {/* Tiêu đề phụ */}
-      <h2
-        className="text-2xl md:text-3xl mb-2 font-japanese-serif text-japanese-gold"
-        style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}
-      >
+      <h2 className="text-2xl md:text-3xl mb-2 font-japanese-serif text-japanese-vermillion">
         Nhà hàng Tokime
       </h2>
 
       {/* Mô tả */}
-      <p className="text-lg md:text-xl mb-8 japanese-text text-white max-w-2xl mx-auto leading-relaxed"
-         style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)" }}>
+      <p className="text-lg md:text-xl mb-8 japanese-text text-japanese-sumi max-w-2xl mx-auto leading-relaxed">
         Mang đến trải nghiệm tuyệt vời nhất cho quý khách
         <br />
         bằng hương vị Nhật truyền thống và lòng hiếu khách chân thành
       </p>
 
+      {/* Nút CTA */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link to="/menu">
           <Button className="zen-button px-8 py-4 text-lg font-japanese">
@@ -55,7 +49,7 @@ const Index = () => {
           </Button>
         </Link>
         <Link to="/reservation">
-          <Button className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-japanese-sumi px-8 py-4 text-lg font-japanese transition-all duration-300">
+          <Button className="border-2 border-japanese-sumi text-japanese-sumi hover:bg-japanese-sumi hover:text-white px-8 py-4 text-lg font-japanese transition-all duration-300">
             🏮 Đặt Bàn
           </Button>
         </Link>
@@ -63,6 +57,7 @@ const Index = () => {
     </div>
   </div>
 </div>
+
 
 
       {/* Dịch vụ */}
