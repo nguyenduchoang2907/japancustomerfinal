@@ -48,11 +48,14 @@ const Index = () => {
             🍱 Xem Thực Đơn
           </Button>
         </Link>
-        <Link to="/reservation">
-          <Button className="border-2 border-japanese-sumi text-japanese-sumi hover:bg-japanese-sumi hover:text-white px-8 py-4 text-lg font-japanese transition-all duration-300">
-            🏮 Đặt Bàn
-          </Button>
-        </Link>
+<Link to="/reservation">
+  <Button
+    className="border-2 border-white text-white hover:bg-white hover:text-japanese-sumi px-8 py-4 text-lg font-japanese transition-all duration-300"
+  >
+    🏮 Đặt Bàn
+  </Button>
+</Link>
+
       </div>
     </div>
   </div>
