@@ -54,10 +54,10 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0 flex items-center group">
               <div className="relative">
                 <span className="text-primary font-bold text-3xl font-japanese-serif tracking-wide group-hover:animate-float">
-                  🌸 桜
+                  🌸 皇
                 </span>
                 <span className="ml-2 text-japanese-sumi font-medium text-xl font-japanese">
-                  Sakura
+                  Tokime
                 </span>
               </div>
             </Link>
