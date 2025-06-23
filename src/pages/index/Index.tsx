@@ -10,42 +10,60 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      {/* Hero Section - Tokime Restaurant */}
-      <div className="relative h-[600px] bg-zen-pattern bg-cover bg-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-japanese-sumi/70 via-japanese-sumi/50 to-japanese-sumi/70">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
-        </div>
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-center text-white p-8 japanese-card bg-black/30 backdrop-blur-sm">
-            <div className="mb-6 animate-float">
-              <span className="text-6xl md:text-8xl">✨</span>
-            </div>
-            <h1 className="japanese-title text-4xl md:text-7xl font-bold mb-4 text-white animate-fade-slide">
-              Tokimeレストラン
-            </h1>
-            <h2 className="text-2xl md:text-3xl mb-2 font-japanese-serif text-japanese-sakura">
-              Nhà hàng Tokime
-            </h2>
-            <p className="text-lg md:text-xl mb-8 japanese-text text-japanese-washi max-w-2xl mx-auto leading-relaxed">
-              Mang đến trải nghiệm tuyệt vời nhất cho quý khách
-              <br />
-              bằng hương vị Nhật truyền thống và lòng hiếu khách chân thành
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/menu">
-                <Button className="zen-button px-8 py-4 text-lg font-japanese">
-                  🍱 Xem Thực Đơn
-                </Button>
-              </Link>
-              <Link to="/reservation">
-                <Button className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-japanese-sumi px-8 py-4 text-lg font-japanese transition-all duration-300">
-                  🏮 Đặt Bàn
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+{/* Hero Section - Tokime Restaurant */}
+<div className="relative h-[600px] bg-zen-pattern bg-cover bg-center">
+  {/* Overlay gradient */}
+  <div className="absolute inset-0 bg-gradient-to-b from-japanese-sumi/70 via-japanese-sumi/50 to-japanese-sumi/70">
+    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
+  </div>
+
+  {/* Nội dung trung tâm */}
+  <div className="relative h-full flex items-center justify-center">
+    <div className="text-center text-white p-8 japanese-card bg-black/60 backdrop-blur-md rounded-xl shadow-lg">
+      <div className="mb-6 animate-float">
+        <span className="text-6xl md:text-8xl">✨</span>
       </div>
+
+      {/* Tiêu đề chính */}
+      <h1
+        className="japanese-title text-4xl md:text-7xl font-bold mb-4 text-white animate-fade-slide"
+        style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)" }}
+      >
+        Tokimeレストラン
+      </h1>
+
+      {/* Tiêu đề phụ */}
+      <h2
+        className="text-2xl md:text-3xl mb-2 font-japanese-serif text-japanese-gold"
+        style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}
+      >
+        Nhà hàng Tokime
+      </h2>
+
+      {/* Mô tả */}
+      <p className="text-lg md:text-xl mb-8 japanese-text text-white max-w-2xl mx-auto leading-relaxed"
+         style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)" }}>
+        Mang đến trải nghiệm tuyệt vời nhất cho quý khách
+        <br />
+        bằng hương vị Nhật truyền thống và lòng hiếu khách chân thành
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Link to="/menu">
+          <Button className="zen-button px-8 py-4 text-lg font-japanese">
+            🍱 Xem Thực Đơn
+          </Button>
+        </Link>
+        <Link to="/reservation">
+          <Button className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-japanese-sumi px-8 py-4 text-lg font-japanese transition-all duration-300">
+            🏮 Đặt Bàn
+          </Button>
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Dịch vụ */}
       <div className="py-20 washi-paper">
