@@ -123,39 +123,46 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Đơn hàng và đặt bàn</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList className="mb-6 w-full">
-                  <TabsTrigger value="food-orders" className="flex-1">
-                    Đơn hàng thức ăn
-                  </TabsTrigger>
-                  <TabsTrigger value="reservations" className="flex-1">
-                    Đặt bàn
-                  </TabsTrigger>
-                </TabsList>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <Card>
+    <CardHeader>
+      <CardTitle>Đơn hàng và đặt bàn</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList className="mb-6 w-full bg-white/80 rounded-md shadow-sm">
+          <TabsTrigger
+            value="food-orders"
+            className="flex-1 text-black hover:text-japanese-vermillion"
+          >
+            Đơn hàng thức ăn
+          </TabsTrigger>
+          <TabsTrigger
+            value="reservations"
+            className="flex-1 text-black hover:text-japanese-vermillion"
+          >
+            Đặt bàn
+          </TabsTrigger>
+        </TabsList>
 
-                <TabsContent value="food-orders">
-                  <FoodOrdersTable
-                    orders={foodOrders}
-                    onPrint={handlePrintReceipt}
-                  />
-                </TabsContent>
+        <TabsContent value="food-orders">
+          <FoodOrdersTable
+            orders={foodOrders}
+            onPrint={handlePrintReceipt}
+          />
+        </TabsContent>
 
-                <TabsContent value="reservations">
-                  <ReservationsTable
-                    reservations={reservations}
-                    onPrint={handlePrintReceipt}
-                  />
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-        </div>
+        <TabsContent value="reservations">
+          <ReservationsTable
+            reservations={reservations}
+            onPrint={handlePrintReceipt}
+          />
+        </TabsContent>
+      </Tabs>
+    </CardContent>
+  </Card>
+</div>
+
       </main>
       <Footer />
     </div>
