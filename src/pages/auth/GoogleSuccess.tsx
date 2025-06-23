@@ -6,17 +6,20 @@ const GoogleSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    alert("🟢 GoogleSuccess mounted");
+
     const token = searchParams.get("token");
     const tokenExpires = searchParams.get("tokenExpires");
 
-    console.log("✅ GoogleSuccess received:");
-    console.log("Token:", token);
-    console.log("TokenExpires:", tokenExpires);
+    alert("Token: " + token);
+    alert("TokenExpires: " + tokenExpires);
 
     if (token && tokenExpires) {
       try {
         const decodedTokenExpires = decodeURIComponent(tokenExpires);
         const expireDate = new Date(decodedTokenExpires);
+
+        alert("Parsed expire date: " + expireDate.toISOString());
 
         if (!isNaN(expireDate.getTime())) {
           const authData = {
@@ -27,19 +30,18 @@ const GoogleSuccess = () => {
 
           localStorage.setItem("customerAuth", JSON.stringify(authData));
 
-          console.log("✅ Saved to localStorage, navigating to /");
+          alert("✅ Saved to localStorage → Redirecting to /");
           navigate("/", { replace: true });
           return;
         } else {
-          console.warn("❌ Expire date is invalid:", expireDate);
+          alert("❌ Invalid expire date: " + expireDate.toString());
         }
       } catch (error) {
-        console.error("❌ Failed to decode or parse expire date:", error);
+        alert("❌ Error decoding tokenExpires: " + String(error));
       }
     }
 
-    // Trường hợp lỗi hoặc thiếu param
-    console.warn("❌ Missing token or tokenExpires, navigating to login");
+    alert("❌ Missing token or tokenExpires → Redirecting to login");
     navigate("/account/login");
   }, [searchParams, navigate]);
 
