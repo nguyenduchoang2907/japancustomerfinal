@@ -6,42 +6,32 @@ const GoogleSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    alert("🟢 GoogleSuccess mounted");
-
     const token = searchParams.get("token");
     const tokenExpires = searchParams.get("tokenExpires");
 
-    alert("Token: " + token);
-    alert("TokenExpires: " + tokenExpires);
+    console.log("✅ GoogleSuccess received:");
+    console.log("Token:", token);
+    console.log("TokenExpires:", tokenExpires);
 
     if (token && tokenExpires) {
-      try {
-        const decodedTokenExpires = decodeURIComponent(tokenExpires);
-        const expireDate = new Date(decodedTokenExpires);
+      const expireDate = new Date(tokenExpires);
 
-        alert("Parsed expire date: " + expireDate.toISOString());
+      console.log("Parsed expire date:", expireDate);
 
-        if (!isNaN(expireDate.getTime())) {
-          const authData = {
-            token,
-            tokenExpires: expireDate.toISOString(),
-            isLoggedIn: true,
-          };
+      if (!isNaN(expireDate.getTime())) {
+        // ✅ Đồng bộ key với AuthChecker
+        localStorage.setItem("token", token);
+        localStorage.setItem("tokenExpires", expireDate.toISOString());
 
-          localStorage.setItem("customerAuth", JSON.stringify(authData));
-
-          alert("✅ Saved to localStorage → Redirecting to /");
-          navigate("/", { replace: true });
-          return;
-        } else {
-          alert("❌ Invalid expire date: " + expireDate.toString());
-        }
-      } catch (error) {
-        alert("❌ Error decoding tokenExpires: " + String(error));
+        console.log("✅ Saved to localStorage → Redirecting to /");
+        navigate("/", { replace: true });
+        return;
+      } else {
+        console.warn("❌ Expire date is invalid:", expireDate);
       }
     }
 
-    alert("❌ Missing token or tokenExpires → Redirecting to login");
+    console.warn("❌ Missing token or tokenExpires → Redirecting to login");
     navigate("/account/login");
   }, [searchParams, navigate]);
 
